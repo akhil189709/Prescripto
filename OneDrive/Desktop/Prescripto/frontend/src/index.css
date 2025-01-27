@@ -1,5 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 @import "tailwindcss";
 
 .active hr{
-    @apply block 
+    @apply block
+}
+*{
+    font-family: outfit;
+}
+html {
+  scroll-behavior: smooth;
 }

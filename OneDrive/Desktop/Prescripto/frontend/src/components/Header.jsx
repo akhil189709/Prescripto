@@ -17,7 +17,10 @@ const Header = () => {
             </p>
           </div>
           <div className="mt-4">
-            <a className="text-black  mr-60 flex items-center gap-2 bg-white px-5 py-3 rounded-full text-gray-600 text-sm  hover:scale-105 transition-all duration-300" href="#speciality">
+            <a
+              className="text-black  mr-60 flex items-center gap-2 bg-white px-5 py-3 rounded-full text-gray-600 text-sm  hover:scale-105 transition-all duration-300"
+              href="#speciality"
+            >
               Book appointment <img src={assets.arrow_icon} alt="" />
             </a>
           </div>
