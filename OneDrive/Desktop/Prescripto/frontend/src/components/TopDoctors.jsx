@@ -7,13 +7,13 @@ const TopDoctors = () => {
   const navigate = useNavigate();
   const { doctors } = useContext(AppContext);
   return (
-    <div className="flex flex-col items-center gap-4 my-16 text-gray-900 md:mx-10">
+    <div className="flex flex-col items-center gap-4 my-16 text-black md:mx-10">
       <h1 className="text-3xl font-medium">Top Doctors to Book</h1>
       <p className="sm:w-1/3 text-center text-sm">
         Simply browse through our extensive list of trusted doctors
       </p>
       <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pt-5 px-3 sm:px-0">
-        {doctors.slice(0, 10).map((item, index) => (
+        {doctors.slice(0, 10).map((item, index) => ( 
           <div
             onClick={() => navigate(`/Appointment/${item._id}`)}
             className="border border-blue-200 rounded-xl overflow-hidden shadow-lg cursor-pointer transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl"

@@ -41,7 +41,7 @@ const Footer = () => {
           <p className="text-lg font-semibold mb-4">Get in Touch</p>
           <ul className="space-y-2">
             <li className="text-sm hover:text-gray-900 cursor-pointer transition">
-              +91-8445477463
+              +91-7500372210
             </li>
             <li className="text-sm hover:text-gray-900 cursor-pointer transition">
               akhildhiman189709@gmail.com
