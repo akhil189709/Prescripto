@@ -1,40 +1,47 @@
+import { useContext, useEffect, useState } from "react";
+import { AppContext } from "../context/Appcontext";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import { AppContext } from "../context/Appcontext.jsx";
 
-const TopDoctors = () => {
-  const navigate = useNavigate();
+const RelatedDoctors = ({ speciality, docId }) => {
   const { doctors } = useContext(AppContext);
+  const navigate = useNavigate();
+  const [relDocs, setRelDocs] = useState([]);
+
+  useEffect(() => {
+    if (doctors.length > 0 && speciality) {
+      const doctorsData = doctors.filter(
+        (doc) => doc.speciality === speciality && doc._id !== docId
+      );
+      setRelDocs(doctorsData);
+    }
+  }, [doctors, speciality, docId]);
 
   return (
-    <div className="flex flex-col items-center gap-6 my-16 text-black px-4 sm:px-6 lg:px-10">
+    <div className="flex flex-col items-center gap-4 my-16 text-black px-4 sm:px-6 lg:px-10">
       {/* Section Title */}
       <h1 className="text-2xl sm:text-3xl font-medium text-center">
-        Top Doctors to Book
+        Related Doctors
       </h1>
-      <p className="sm:w-2/3 md:w-1/2 text-center text-sm md:text-base">
+      <p className="w-full sm:w-2/3 lg:w-1/2 text-center text-sm text-gray-600">
         Simply browse through our extensive list of trusted doctors
       </p>
 
       {/* Doctors Grid */}
-      <div className="w-full grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pt-5 justify-items-center">
-        {doctors.slice(0, 10).map((item, index) => (
+      <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pt-5">
+        {relDocs.slice(0, 5).map((item, index) => (
           <div
             onClick={() => {
               navigate(`/Appointment/${item._id}`);
               scrollTo(0, 0);
             }}
+            className="border border-blue-200 rounded-xl overflow-hidden shadow-md cursor-pointer transform transition-all duration-300 hover:-translate-y-2 hover:shadow-lg"
             key={index}
-            className="border border-blue-200 rounded-xl overflow-hidden shadow-lg cursor-pointer transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl"
           >
-            {/* Doctor Image */}
             <img
-              className="bg-blue-50 w-full h-40 sm:h-48 md:h-56 object-contain"
+              className="bg-blue-50 w-full h-44 sm:h-48 md:h-52 object-cover"
               src={item.image}
               alt={`Profile of ${item.name}`}
             />
-
-            {/* Doctor Info */}
             <div className="p-4">
               <div className="flex items-center text-sm text-green-500 mb-2">
                 <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
@@ -61,4 +68,4 @@ const TopDoctors = () => {
   );
 };
 
-export default TopDoctors;
+export default RelatedDoctors;
