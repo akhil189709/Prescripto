@@ -1,6 +1,14 @@
+import { useNavigate } from "react-router-dom";
 import { assets } from "../assets/assets";
 
 const Footer = () => {
+  const navigate = useNavigate();
+
+  const handleNavigation = (path) => {
+    navigate(path);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <footer className="bg-white text-gray-800 py-10">
       <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 px-6 md:px-12">
@@ -25,13 +33,22 @@ const Footer = () => {
         <div className="sm:ml-10">
           <p className="text-lg font-semibold mb-4">Company</p>
           <ul className="space-y-2">
-            <li className="hover:text-gray-900 cursor-pointer transition">
+            <li
+              onClick={() => handleNavigation("/")}
+              className="hover:text-gray-900 cursor-pointer transition"
+            >
               Home
             </li>
-            <li className="hover:text-gray-900 cursor-pointer transition">
+            <li
+              onClick={() => handleNavigation("/About")}
+              className="hover:text-gray-900 cursor-pointer transition"
+            >
               About
             </li>
-            <li className="hover:text-gray-900 cursor-pointer transition">
+            <li
+              onClick={() => handleNavigation("/Contact")}
+              className="hover:text-gray-900 cursor-pointer transition"
+            >
               Contact Us
             </li>
             <li className="hover:text-gray-900 cursor-pointer transition">
